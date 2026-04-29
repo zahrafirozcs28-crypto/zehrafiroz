@@ -1,0 +1,23 @@
+def min_insertions_to_valid(s):
+    open_needed = 0
+    close_needed = 0
+    
+    for char in s:
+        if char == '(':
+            close_needed += 1
+        else:
+            if close_needed > 0:
+                close_needed -= 1
+            else:
+                open_needed += 1
+                
+    return open_needed + close_needed
+
+s1 = "(()("
+print(min_insertions_to_valid(s1))
+
+s2 = ")))"
+print(min_insertions_to_valid(s2))
+
+s3 = ")()()"
+print(min_insertions_to_valid(s3))
